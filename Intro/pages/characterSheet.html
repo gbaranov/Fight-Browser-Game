@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VladKondrachuk</title>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ 
+ <style>
+       @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+     
+     
+body {
+     background-image:url(../assets/images/Parchment.jpg);
+     height: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    font-family: 'MedievalSharp', cursive;
+}
+     
+.card {
+      height: 100%; 
+      margin-bottom: 15px;
+      width:100%;
+      font-size: 15px;
+      color: white;
+      text-align: center;
+      background-color: black;
+      font-family: 'MedievalSharp', cursive;
+    } 
+     
+li {
+        list-style-type: none;
+    }
+     
+.container { 
+      margin-top: 220px;
+      font-size: 35px;
+      color: white;
+      text-align: center;
+      text-decoration: underline;
+      background-color: black;
+      font-family: 'MedievalSharp', cursive;
+    }
+     
+.musicButtonContainer {
+      left: 0;
+      top: 0;
+      margin-left: 80%;
+      position: relative;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      background-color: black;
+      font-family: 'MedievalSharp', cursive;
+    }
+
+footer {
+       position: fixed;
+       left: 0;
+       bottom: 0;
+       height: 150px;
+       text-align: center;
+       width: 100%;
+       background-color: black;
+       color: white;
+       padding: 40px;
+}
+     
+header {
+       position: fixed;
+       left: 0;
+       top: 0;
+       font-size: 35px;
+       margin-bottom: auto;
+       height: auto;
+       text-align: center;
+       width: 100%;
+       background-color: black;
+       color: white;
+       padding: 30px;
+}
+     
+     
+     
+  </style>
+</head>
+
+
+
+<body>
+   
+   
+                
+        
+                
+                    
+        <audio id="backgroundMusic">
+            <source src="/Intro/assets/music/bensound-epic.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="voiceOver">
+            <source src="/Intro/assets/music/Page1.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="clickSound">
+            <source src="/Intro/assets/music/clicksound.mp3" type="audio/mpeg">
+        </audio>
+ 
+<header>
+       <div class="row">
+        
+          <div class="col-12">
+           <div class="musicButtonContainer">
+                 <button onclick="playAudio()" class="musicButton" type="button">Play Music</button>
+                 <button onclick="pauseAudio()" class="musicButton" type="button">Pause Music</button> 
+            </div>
+            <h2 id="copyright">Choose Your Hero</h2>
+            <input id="characterName" type="text" name="name" value="chose a name"><br>
+            
+            </div>      
+        
+    </div>       
+</header>            
+                              
+                                             
+                                                            
+                                                                           
+                                                                                          
+                                                                                                         
+        <div class="container">                                                                                                                
+                                                                                                                                       
+                                                                                                                                                 
+   <div class="row">
+        
+          <div class="col-12">                                                                                                                                                                                 
+    <div class="row">
+          <div class="col-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><b>Archer</b></h5>
+                <img src="../assets/images/archerAvatar.jpg" alt="Avatar" style="width:100%">
+                <p>The Archer is a warden of the forest, capable with the bow and dagger</p>
+                <ul>
+                    <li>Attack: 40</li>
+                    <li>Hit Points: 350</li>
+                    <li>Defense: 80</li>
+                    <li>Sneak: + 7</li>
+
+                </ul>
+                <a href="#" class="btn btn-primary" id="ArcherSubmit">Chose</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><b>Barbarian</b></h5>
+                <img src="../assets/images/barbarianAvatar.jpg" alt="Avatar" style="width:75%">
+                <p>The Barbararian is a fierce warrior, the axe is his weapon of choice</p> 
+                <ul>
+                    <li>Attack: 60</li>
+                    <li>Hit Points: 500</li>
+                    <li>Defense: 20</li>
+                    <li>Intimidation: + 5</li>
+
+                </ul>
+                <a href="#" class="btn btn-primary" id="BarbarianSubmit">Chose</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><b>Paladin</b></h5>
+                <img src="../assets/images/paladinAvatar.jpg" alt="Avatar" style="width:100%">
+                <p>The Paladin is a deffender of light, he relies on his sword and his faith in the old Gods to carry him through.</p>
+                <ul>
+                    <li>Attack: 50</li>
+                    <li>Hit Points: 400</li>
+                    <li>Defense: 60</li>
+                    <li>Turn Undead: + 8</li>
+
+                </ul>
+                <a href="#" class="btn btn-primary" id="PaladinSubmit">Chose</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><b>Rogue</b></h5>
+                <img src="../assets/images/rogueAvatar.jpg" alt="Avatar" style="width:100%; height:150px;">
+                <p>The Rogue is a quick witted theif, she relies on her stealth and quick reflexes to win the battle.</p> 
+                <ul>
+                    <li>Attack: 100</li>
+                    <li>Hit Points: 300</li>
+                    <li>Defense: 40</li>
+                    <li>Speech: + 7</li>
+
+                </ul>
+                <a href="#" class="btn btn-primary" id="RogueSubmit">Chose</a>
+              </div>
+            </div>
+          </div>
+  
+</div>
+           
+    </div> 
+        </div>
+    </div>    
+                        
+    
+<footer>
+        <div id="Copydiv">
+            <h2 id="copyright">Copyright &copy;</h2>
+        </div>
+                
+</footer>
+
+
+<script>
+
+    var currentUserId = $("#userId").attr("data-value");
+
+    console.log(currentUserId);
+
+    console.log("hello");
+
+
+                $("#ArcherSubmit").on("click", function (event) {
+                    event.preventDefault();
+                    
+                    var newCharacter = {
+                        characterType: "Archer",
+                        characterName: $("#characterName").val().trim(),
+                        hp: 350,
+                        attack: 40,
+                        defense: 80
+                        
+                    };
+                    
+                    console.log("Created new character");
+                    console.log(newCharacter);
+
+
+                    $.post("/dashboard", {
+                        data: newCharacter
+                    }).then(function (data) {
+                        console.log("Created new character");
+                        console.log(data);
+
+                    });
+
+                });
+                    
+            
+    
+            $("#BarbarianSubmit").on("click", function (event) {
+                    event.preventDefault();
+                    
+                    var newCharacter = {
+                        characterType: "Barbarian",
+                        characterName: $("#characterName").val().trim(),
+                        hp: 500,
+                        attack: 60,
+                        defense: 20
+                       
+                        
+                    };
+                
+                    console.log("Created new character");
+                    console.log(newCharacter);
+
+                    $.post("/dashboard", {
+                        data: newCharacter
+                    }).then(function (data) {
+                        console.log("Created new character");
+                        console.log(data);
+
+                    });
+
+                });
+    
+            $("#PaladinSubmit").on("click", function (event) {
+                    event.preventDefault();
+                    
+                    var newCharacter = {
+                        characterType: "Paladin",
+                        characterName: $("#characterName").val().trim(),
+                        hp: 400,
+                        attack: 50,
+                        defense: 60
+                        
+                        
+                    };
+                
+                    console.log("Created new character");
+                    console.log(newCharacter);
+
+                    $.post("/dashboard", {
+                        data: newCharacter
+                    }).then(function (data) {
+                        console.log("Created new character");
+                        console.log(data);
+
+                    });
+
+                });
+    
+            $("#RogueSubmit").on("click", function (event) {
+                    event.preventDefault();
+                    
+                    var newCharacter = {
+                        characterType: "Rogue",
+                        characterName: $("#characterName").val().trim(),
+                        hp: 350,
+                        attack: 40,
+                        defense: 80
+                        
+                        
+                    };
+                
+                    console.log("Created new character");
+                    console.log(newCharacter);
+
+                    $.post("/dashboard", {
+                        data: newCharacter
+                    }).then(function (data) {
+                        console.log("Created new character");
+                        console.log(data);
+
+                    });
+
+                });
+                
+        var x = document.getElementById("backgroundMusic"); 
+        var y = document.getElementById("voiceOver");
+        
+        
+        function playAudio() { 
+            x.play(); 
+            y.play();
+        } 
+
+        function pauseAudio() { 
+            x.pause(); 
+            y.pause();
+        } 
+        
+        /*document.onload = playAudio();
+        
+        $('.btn btn-primary').on('click', function(){
+            var z = document.getElementById("clickSound");
+            z.play();
+        });
+        */
+                    
+</script>
+
+</body>
+</html>

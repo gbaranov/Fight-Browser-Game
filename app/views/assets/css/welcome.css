@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    background: url("../images/Sheild3.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'MedievalSharp', cursive;
+    text-align: center;
+  }
+
+  .container{
+    background: url("../images/Parchment.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    font-family: 'MedievalSharp', cursive;
+    text-align: center;
+    margin-top:2%;
+    height : 550px;
+    width:500px;
+    font-size:35px;
+    color:black;
+    ;
+  }
+  
+
+  
+
+ #signupContainer{
+      padding:65px;
+      display: inline-block;
+      font-size: 60px;
+      width:500px;
+      height:550px;
+      overflow:auto;
+  }
+
+  h1{
+    font-size:100px;
+    color:goldenrod;
+    margin-top:5%;
+  }
+
+  h2{
+    font-size:50px;
+    color:red;
+    
+  }
+
+  ::-webkit-scrollbar {
+    width: 30px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #888;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    
+    background: url("../images/Chainmail.jpg") no-repeat center center fixed; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+  #sword{
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    height:500px;
+    transform: rotate(40deg);
+  }
+
+  #paper{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height:500px;
+    transform: rotate(20deg);
+  }
+
+  #summerian{
+    position: absolute;
+    top: 0%;
+    left: -20%;
+    height:50px;
+    width:70px;
+    transform: rotate(0deg);
+  }
+
+  #manuscript{
+    position: absolute;
+    top: 0px;
+    left: 80%;
+    height:500px;
+    transform: rotate(5deg);
+  }
+
+  #manuscript2{
+    position: absolute;
+    top: 10%;
+    left: 75%;
+    height:500px;
+    transform: rotate(20deg);
+  }
+
+  #herbs{
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    height:500px;
+    transform: rotate(0deg);
+  }
+
+  #skull{
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    height:500px;
+    transform: rotate(50deg);
+  }
+
+
+

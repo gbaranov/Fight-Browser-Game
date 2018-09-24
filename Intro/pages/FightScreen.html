@@ -1,0 +1,103 @@
+<!-- Basic CSS Example -->
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VladKondrachuk</title>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+*{
+    margin: 0;
+    padding: 0;
+   
+}
+
+html {
+    background-image:url(../assets/images/Parchment.jpg);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;   
+    font-family: 'MedievalSharp', cursive;
+}
+      
+ h1 {
+      margin-bottom: 15px;
+      font-size: 60px;
+    }
+      
+header {
+       position: fixed;
+       left: 0;
+       top: 30%;
+       font-size: 35px;
+       margin-bottom: auto;
+       height: auto;
+       text-align: center;
+       width: 100%;
+       background-color: black;
+       color: white;
+       padding: 2px;
+       font-family: 'MedievalSharp', cursive;
+}
+      
+.musicButtonContainer {
+      left: 0;
+      top: 0;
+      margin-left: 80%;
+      position: relative;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      background-color: black;
+      font-family: 'MedievalSharp', cursive;
+    }
+      
+      
+.NextPage{
+        background-color:orangered; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        }
+      
+.NextPage:hover {
+        background-color: #4CAF50; 
+        cursor: pointer;
+        }
+      
+     
+  </style>
+</head>
+
+<body>
+
+<header>
+       <div class="row">
+          <div class="col-12">
+            <h1>Warrior Quest</h1>
+            <a href ="page1_intro.html"><button class="NextPage"> Play Game</button></a>      
+        
+           </div>  
+        </div>     
+</header> 
+
+</body>
+
+</html>

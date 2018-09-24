@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    background: url("../images/Sheild3.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'MedievalSharp', cursive;
+    text-align: center;
+  }
+
+  .container{
+    background: url("../images/Parchment.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    font-family: 'MedievalSharp', cursive;
+    text-align: center;
+    margin-top:5%;
+    height : 500px;
+    width:500px;
+    border-radius: 10%;
+    font-size:20px;
+    color:red;
+  }
+
+  h1{
+    font-size:100px;
+    color:goldenrod;
+    margin-top:5%;
+  }

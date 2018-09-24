@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Project 2 Game</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/battle.css">
+
+
+
+</head>
+
+<body>
+
+
+    <div id="pageContainer">
+
+        <div class="actionContainer">
+
+            <div class="enemyContainer">
+                <img class="enemyImg" scr="">
+            </div>
+
+            <div class="characterContainer">
+                <img class="characterImg" scr="">
+            </div>
+
+            <img class="backgroundImg" src="">
+        </div>
+        <div class="radioContainer">
+
+            <div class="selectField">
+                <form method="get" onsubmit="return is_checked()">
+
+                    <fieldset class="group1" id="group1">
+                        <div class="topBanner">
+                            <img class="bodySelect" src="assets/images/swords.png">Attack!
+
+                        </div>
+
+                        <div class="attackField">
+                            <form method="get" onsubmit="mainGame()">
+
+                                <br>
+
+                                <input class="form-radio headTarget" type="radio" name="attackSelected" value="head" id="Attack_head_checked">
+                                Attack Head
+                                <br>
+                                <br>
+                                <input class="form-radio bodyTarget" type="radio" name="attackSelected" value="body" id="Attack_body_checked">
+                                Attack
+                                Body
+                                <br>
+                                <br>
+                                <input class="form-radio legsTarget" type="radio" name="attackSelected" value="legs" id="Attack_legs_checked">
+                                Attack
+                                Legs
+                                <br>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="group2" id="group2">
+
+                        <div class="topBanner">
+                            <img class="bodySelect" src="assets/images/shield.png"> Defend!
+
+                        </div>
+
+                        <div class="defenseField">
+                            <br>
+                            <input class="form-radio headTarget" type="radio" name="defendSelected" value="head" id="Defend_head_checked">
+                            Defend
+                            Head
+                            <br>
+                            <br>
+                            <input class="form-radio bodyTarget" type="radio" name="defendSelected" value="body" id="Defend_body_checked">
+                            Defend
+                            Body
+                            <br>
+                            <br>
+                            <input class="form-radio legsTarget" type="radio" name="defendSelected" value="legs" id="Defend_legs_checked">
+                            Defend
+                            Legs
+                            <br>
+                            <br>
+                            <input id="submitBtn" type="submit" value="">
+                        </div>
+                    </fieldset>
+
+
+
+
+                </form>
+            </div>
+
+            <div class="idkYet">
+                <div class="topDisplay">
+                    <div class="topBanner2 ">
+                        <p class="down">Player Health</p>
+                    </div>
+                    <div class="playerField scrollbar style-5">
+                        <ul id="enemyField style-5">
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bottomDisplay style-5">
+                    <div class="topBanner2">
+                        <p class="down">Enemy Health</p>
+                    </div>
+                    <div class="enemyField scrollbar style-5">
+                        <ul id="enemyField style-5">
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="fightConsole">
+                <div class="topBanner">
+
+                </div>
+                <div class="consoleField scrollbar style-5">
+                    <ul id="consoleField">
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            let imageNum = Math.floor((Math.random() * 10) + 1);
+            console.log(imageNum)
+            if (imageNum === 1) {
+                $(".backgroundImg").attr("src",
+                    "http://www.coollibrarian.com/wp-content/uploads/i-ll-just-leave-some-pixel-art-gifs-here-album-on-imgur-cool-game-backgrounds.gif"
+                );
+            }
+            if (imageNum === 2) {
+                $(".backgroundImg").attr("src",
+                    "https://i.kinja-img.com/gawker-media/image/upload/t_original/1454745043983244071.gif"
+                );
+            }
+            if (imageNum === 3) {
+                $(".backgroundImg").attr("src",
+                    "https://i.pinimg.com/originals/36/09/a5/3609a58f09f1c9c87fea4cf875b564b7.gif")
+            }
+            if (imageNum === 4) {
+                $(".backgroundImg").attr("src", "http://i.imgur.com/CjWFZbW.gif");
+            }
+            if (imageNum === 5) {
+                $(".backgroundImg").attr("src",
+                    "https://i.pinimg.com/originals/b4/cd/07/b4cd072184e901125d117ae11f220b88.gif");
+            }
+            if (imageNum === 6) {
+                $(".backgroundImg").attr("src",
+                    "https://i.pinimg.com/originals/e2/85/66/e285661a023fb83c8d7f975980422c22.gif");
+            }
+            if (imageNum === 7) {
+                $(".backgroundImg").attr("src", "https://i.giphy.com/media/yByo4tOPLJKla/giphy.webp");
+            }
+            if (imageNum === 8) {
+                $(".backgroundImg").attr("src", "https://i.imgur.com/0IWb7dn.gif");
+            }
+            if (imageNum === 9) {
+                $(".backgroundImg").attr("src",
+                    "http://gifimage.net/wp-content/uploads/2018/04/pixel-art-gif-background-7.gif");
+            }
+            if (imageNum === 10) {
+                $(".backgroundImg").attr("src",
+                    "http://www.fightersgeneration.com/nz3/game/lastblade/lb1/lastblade-shigen-stage-animate.gif"
+                );
+            }
+
+        })
+        $(document).ready(function () {
+
+            let enemyNum = Math.floor((Math.random() * 10) + 1);
+            // var enemyNum = 7
+            console.log(enemyNum)
+            if (enemyNum === 1) {
+                $(".enemyImg").attr("src", "assets/images/dragon.png");
+                $(".enemyContainer").css("width", "40%");
+                $(".enemyContainer").css("height", "50%");
+
+            }
+            if (enemyNum === 2) {
+                $(".enemyImg").attr("src", "assets/images/hoard.png");
+                $(".enemyContainer").css("width", "20%");
+                $(".enemyContainer").css("height", "40%");
+                $(".enemyContainer").css("bottom", "45%");
+
+            }
+            if (enemyNum === 3) {
+                $(".enemyImg").attr("src", "assets/images/slime.png")
+                $(".enemyContainer").css("width", "20%");
+                $(".enemyContainer").css("height", "40%");
+            }
+            if (enemyNum === 4) {
+                $(".enemyImg").attr("src", "assets/images/baphomet.png");
+                $(".enemyContainer").css("width", "30%");
+                $(".enemyContainer").css("height", "60%");
+            }
+            if (enemyNum === 5) {
+                $(".enemyImg").attr("src", "assets/images/underdark.png");
+                $(".enemyContainer").css("width", "30%");
+                $(".enemyContainer").css("height", "60%");
+            }
+            if (enemyNum === 6) {
+                $(".enemyImg").attr("src", "assets/images/crabman.png");
+                $(".enemyContainer").css("width", "25%");
+                $(".enemyContainer").css("height", "40%");
+            }
+            if (enemyNum === 7) {
+                $(".enemyImg").attr("src", "assets/images/demon.png");
+                $(".enemyContainer").css("width", "22%");
+                $(".enemyContainer").css("height", "45%");
+            }
+            if (enemyNum === 8) {
+                $(".enemyImg").attr("src", "assets/images/horse.png");
+                $(".enemyContainer").css("width", "20%");
+                $(".enemyContainer").css("height", "45%");
+            }
+            if (enemyNum === 9) {
+                $(".enemyImg").attr("src", "assets/images/skeleton.png");
+                $(".enemyContainer").css("width", "20%");
+                $(".enemyContainer").css("height", "60%");
+                $(".enemyContainer").css("bottom", "27%");
+            }
+            if (enemyNum === 10) {
+                $(".enemyImg").attr("src", "assets/images/ghoul.png");
+                $(".enemyContainer").css("width", "30%");
+                $(".enemyContainer").css("height", "38%");
+                $(".enemyContainer").css("bottom", "45%");
+            }
+
+        })
+
+
+
+
+
+
+        var newCharacter1 = {};
+        var newCharacter2 = {};
+
+        $.getJSON('/api/userdata', function (data) {
+            console.log(data);
+
+
+
+
+            var charSelected = data.chars[data.userSelected - 1];
+            console.log(charSelected);
+
+            newCharacter1 = {
+                characterType: charSelected.char_name,
+                characterName: data.userNameSelected,
+                hp: charSelected.hp,
+                attack: charSelected.attack,
+                defense: charSelected.defence
+            }
+
+            newCharacter2 = {
+                characterType: "Enemy",
+                characterName: "Monster",
+                hp: 500 - (Math.floor((Math.random() * 100) + 1)),
+                attack: 100 - (Math.floor((Math.random() * 70) + 1)),
+                defense: 100 - (Math.floor((Math.random() * 70) + 1))
+            };
+
+        });
+
+
+        function is_checked() {
+            let AttackHeadCheckedJS = document.getElementById('Attack_head_checked').checked;
+            let AttackBodyCheckedJS = document.getElementById('Attack_body_checked').checked;
+            let AttackLegsCheckedJS = document.getElementById('Attack_legs_checked').checked;
+
+            let DefendHeadCheckedJS = document.getElementById('Defend_head_checked').checked;
+            let DefendBodyCheckedJS = document.getElementById('Defend_body_checked').checked;
+            let DefendLegsCheckedJS = document.getElementById('Defend_legs_checked').checked;
+           
+            event.preventDefault();
+
+            function getComputerChoiceAttack() {
+                let CompChoiceAttack = ['comp_head_attack', 'comp_body_attack', 'comp_legs_attack'];
+                let randomNumber = Math.floor(Math.random() * 3);
+                return CompChoiceAttack[randomNumber];
+            }
+
+            function getComputerChoiceDefense() {
+                let CompChoiceDefense = ['comp_head_defence', 'comp_body_defence', 'comp_legs_defence'];
+                let randomNumber = Math.floor(Math.random() * 3);
+                return CompChoiceDefense[randomNumber];
+            }
+
+            function computerAttack() {
+
+                let char2_attackRoll_head = Math.floor((Math.random() * 10) + 1);
+                let char1_defenseRoll_head = Math.floor((Math.random() * 11) + 1);
+
+                let char2_attackRoll_body = Math.floor((Math.random() * 15) + 1);
+                let char1_defenseRoll_body = Math.floor((Math.random() * 11) + 1);
+
+                let char2_attackRoll_legs = Math.floor((Math.random() * 20) + 1);
+                let char1_defenseRoll_legs = Math.floor((Math.random() * 11) + 1);
+
+                let CompChoiceAttack = getComputerChoiceAttack();
+
+                if (CompChoiceAttack == 'comp_head_attack') {
+
+
+                    $(".consoleField").append("<li>" + "Enemy Attacks Your Head!" + "</li>")
+                    $(".consoleField").append("<li>" + "Enemy Attack Roll: " + char2_attackRoll_head + "</li>")
+                    $(".consoleField").append("<li>" + "Player Defense Roll: " + char1_defenseRoll_head + "</li>")
+
+
+                    if (char2_attackRoll_head === 10) {
+                        $(".consoleField").append("<li>" + "Enemy Scores Critical Hit! " + "</li>")
+                        $(".consoleField").append("<li>" + "Enemy Attack Damage:  " + newCharacter2.attack + "</li>")
+                        newCharacter1.hp = Math.floor(newCharacter1.hp - newCharacter2.attack);
+                        $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append("-----------------------------------------------------------")
+                    } else if (char2_attackRoll_head >= char1_defenseRoll_head && DefendHeadCheckedJS == true) {
+                        $(".consoleField").append("<li>" + "DEFENDED!!!" + "</li>");
+                        $(".consoleField").append("<li>" + "50% Defense Modifier! Enemy Attack Damage: " +
+                            newCharacter2.attack + "</li>");
+
+                        newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense *
+                            0.5)));
+                       $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append(
+                            "----------------------------------------------------------------------")
+                    } else if (char2_attackRoll_head >= char1_defenseRoll_head) {
+
+                        $(".consoleField").append("<li>" + "20% Defense Modifier! Enemy Attack Damage: " +
+                            newCharacter2.attack + "</li>");
+
+
+                       $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append(
+                            "------------------------------------------------------------------------------")
+                    } else if (char2_attackRoll_head < char1_defenseRoll_head) {
+                        $(".consoleField").append("<li>" + "Enemy Missed The Head!" + "</li>")
+
+                        $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append(
+                            "------------------------------------------------------------------------------")
+                    }
+
+                };
+
+                if (CompChoiceAttack == 'comp_body_attack') {
+                    $(".consoleField").append("<li>" + "Enemy Attacks Body" + "</li>")
+                    $(".consoleField").append("<li>" + "Enemy attack Roll: " + char2_attackRoll_body + "</li>")
+                    $(".consoleField").append("<li>" + "Enemy attack Roll: " + char2_attackRoll_body + "</li>")
+                    $(".consoleField").append("<li>" + "Player defense Roll: " + char1_defenseRoll_body + "</li>")
+
+
+
+                    if (char2_attackRoll_body === 15) {
+                        $(".consoleField").append("<li>" + "Enemy Scores a CRITICAL Hit!" + "</li>")
+                        $(".consoleField").append("<li>" + "Enemy Attack Damage: " + newCharacter2.attack + "</li>")
+
+                        newCharacter1.hp = Math.floor(newCharacter1.hp - newCharacter2.attack);
+
+                        $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append(
+                            "------------------------------------------------------------------------------")
+                    } else if (char2_attackRoll_body >= char1_defenseRoll_body && DefendBodyCheckedJS == true) {
+                        $(".consoleField").append("<li>" + "DEFENDED!!!" + "</li>")
+                        $(".consoleField").append("<li>" + "60% Defense Modifier! Enemy Attack Damage: " +
+                            newCharacter2.attack + "</li>")
+                        newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense *
+                            0.6)));
+                       $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append(
+                            "------------------------------------------------------------------------------")
+                    } else if (char2_attackRoll_body >= char1_defenseRoll_body) {
+                        $(".consoleField").append("<li>" + "40% Defense Modifier! Enemy Attack Damage: " +
+                            newCharacter2.attack + "</li>")
+
+                        newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense *
+                            0.4)));
+                       $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append(
+                            "------------------------------------------------------------------------------")
+                    } else if (char2_attackRoll_body < char1_defenseRoll_body) {
+                        $(".consoleField").append("<li>" + "Enemy Missed the Body!" + "</li>")
+                       $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append(
+                            "------------------------------------------------------------------------------")
+                    }
+                };
+
+                if (CompChoiceAttack == 'comp_legs_attack') {
+
+                    $(".consoleField").append("<li>" + "Enemy Attacks Legs" + "</li>")
+                    $(".consoleField").append("<li>" + "Enemy attack Roll: " + char2_attackRoll_legs + "</li>")
+                    $(".consoleField").append("<li>" + "Player defense Roll: " + char1_defenseRoll_legs + "</li>")
+
+
+                    if (char2_attackRoll_legs === 20) {
+                        $(".consoleField").append("<li>" + "Enemy Scores a CRITICAL Hit!" + "</li>");
+                        $(".consoleField").append("<li>" + "Enemy Attack Damage: " + newCharacter2.attack + "</li>");
+                        newCharacter1.hp = Math.floor(newCharacter1.hp - newCharacter2.attack);
+                        $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        console.log(
+                            "------------------------------------------------------------------------------")
+                    } else if (char2_attackRoll_legs >= char1_defenseRoll_legs && DefendLegsCheckedJS == true) {
+                        $(".consoleField").append("<li>" + "DEFENDED!" + "</li>");
+                        $(".consoleField").append("<li>" + "80% Defense Modifier! Enemy Attack Damage: " +
+                            newCharacter2.attack + "</li>");
+
+                        newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense *
+                            0.8)));
+                        $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        console.log(
+                            "------------------------------------------------------------------------------")
+                    } else if (char2_attackRoll_legs >= char1_defenseRoll_legs) {
+
+                        $(".consoleField").append("<li>" + "60% Defense Modifier! Enemy Attack Damage: " +
+                            newCharacter2.attack + "</li>");
+
+
+                        newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense *
+                            0.6)));
+                        $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        console.log(
+                            "------------------------------------------------------------------------------")
+                    } else if (char2_attackRoll_legs < char1_defenseRoll_legs) {
+                        $(".consoleField").append("<li>" + "Enemy Missed the Legs!" + newCharacter2.attack + "</li>");
+
+
+                        $(".playerField").append("<li>" + "Player HP: " + newCharacter1.hp + "</li>")
+                        $(".consoleField").append(
+                            "------------------------------------------------------------------------------")
+                    }
+                };
+            };
+
+            function attackHead() {
+                let char1_attackRoll_head = Math.floor((Math.random() * 10) + 1);
+                let char2_defenseRoll_head = Math.floor((Math.random() * 11) + 1);
+                let CompChoiceDefense = getComputerChoiceDefense();
+                $(".consoleField").append("<li>" + "You Attack the Head" + "</li>");
+                $(".consoleField").append("<li>" + "Player attack Roll: " + char1_attackRoll_head + "</li>");
+                $(".consoleField").append("<li>" + "Computer defense Roll: " + char2_defenseRoll_head + "</li>");
+
+
+
+                if (char1_attackRoll_head === 10) {
+                    $(".consoleField").append("<li>" + "You Scored a CRITICAL Hit!!!" + "</li>");
+
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - newCharacter1.attack);
+
+                    
+                        $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                    $(".consoleField").append(
+                        "------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_head >= char2_defenseRoll_head && CompChoiceDefense ==
+                    'comp_head_defence') {
+                    $(".consoleField").append("<li>" + "Enemy Defended!" + "</li>");
+                    $(".consoleField").append("<li>" + "Your Attack -50%" + "</li>");
+                    $(".consoleField").append("<li>" + "Player attack Damage: " + newCharacter1.attack + "</li>");
+
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense *
+                        0.5)));
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                    console.log("------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_head >= char2_defenseRoll_head) {
+                    $(".consoleField").append("<li>" + "Attack is Higher! Player attack Damage: " + newCharacter1.attack +
+                        "</li>");
+
+
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense *
+                        0.2)));
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                   $(".consoleField").append("------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_head < char2_defenseRoll_head) {
+                    $(".consoleField").append("<li>" + "you missed the head" + "</li>")
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                   $(".consoleField").append("------------------------------------------------------------------------------")
+                }
+                computerAttack();
+            };
+
+            function attackBody() {
+                let char1_attackRoll_body = Math.floor((Math.random() * 15) + 1);
+                let char2_defenseRoll_body = Math.floor((Math.random() * 11) + 1);
+                let CompChoiceDefense = getComputerChoiceDefense();
+                $(".consoleField").append("<li>" + "You Attack the Body!" + "</li>");
+                $(".consoleField").append("<li>" + "Player attack Roll: " + char1_attackRoll_body + "</li>");
+                $(".consoleField").append("<li>" + "Computer defense Roll: " + char2_defenseRoll_body + "</li>");
+
+                if (char1_attackRoll_body === 15) {
+                    $(".consoleField").append("<li>" + "You Scored a CRITICAL Hit!!!" + "</li>");
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - newCharacter1.attack);
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                    console.log("------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_body >= char2_defenseRoll_body && CompChoiceDefense ==
+                    'comp_body_defence') {
+                    $(".consoleField").append("<li>" + "Enemy Defended!" + "</li>");
+                    $(".consoleField").append("<li>" + "Your Attack -60%" + "</li>");
+                    $(".consoleField").append("<li>" + "Player attack Damage: " + newCharacter1.attack + "</li>");
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense *
+                        0.6)));
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                    $(".consoleField").append("------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_body >= char2_defenseRoll_body) {
+                    $(".consoleField").append("<li>" + "Your Attack - Enemy 40% Defense Modifier:  " + Math.floor(newCharacter1.attack - (
+                        newCharacter2.defense * 0.4)) + "</li>")
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense *
+                        0.4)));
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                    $(".consoleField").append("------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_body < char2_defenseRoll_body) {
+                    $(".consoleField").append("<li>" + "you missed the body" + "</li>")
+                   $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                    $(".consoleField").append("------------------------------------------------------------------------------")
+                }
+                computerAttack();
+            };
+
+            function attackLegs() {
+
+                let char1_attackRoll_legs = Math.floor((Math.random() * 20) + 1);
+                let char2_defenseRoll_legs = Math.floor((Math.random() * 11) + 1);
+                let CompChoiceDefense = getComputerChoiceDefense();
+                $(".consoleField").append("<li>" + "You Attack the Legs!" + "</li>");
+                $(".consoleField").append("<li>" + "Player attack Roll: " + char1_attackRoll_legs + "</li>");
+                $(".consoleField").append("<li>" + "Computer defense Roll: " + char2_defenseRoll_legs + "</li>");
+
+                if (char1_attackRoll_legs === 20) {
+                    $(".consoleField").append("<li>" + "You Scored a CRITICAL Hit!!!" + "</li>");
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - newCharacter1.attack);
+                   $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                    $(".consoleField").append(
+                        "------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_legs >= char2_defenseRoll_legs && CompChoiceDefense ==
+                    'comp_legs_defence') {
+                    $(".consoleField").append("<li>" + "Enemy Defended!" + "</li>");
+                    $(".consoleField").append("<li>" + "Your Attack -80%" + "</li>");
+                    $(".consoleField").append("<li>" + "Player attack Damage: " + newCharacter1.attack + "</li>");
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense *
+                        0.8)));
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                     $(".consoleField").append("------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_legs >= char2_defenseRoll_legs) {
+                     $(".consoleField").append("<li>"+ "Computer.defense* 0.6 is   " + (newCharacter2.defense * 0.6))
+                     $(".consoleField").append("Your Attack - Enemy 60% Defense Modifier:  " + Math.floor(newCharacter1.attack - (
+                        newCharacter2.defense * 0.6)))
+                    newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense *
+                        0.6)));
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                    $(".consoleField").append("------------------------------------------------------------------------------")
+                } else if (char1_attackRoll_legs < char2_defenseRoll_legs) {
+                    $(".consoleField").append("<li>" + "you missed the head" + "</li>")
+                    $(".enemyField").append("<li>" + "Enemy HP: " + newCharacter2.hp + "</li>")
+                   $(".consoleField").append("------------------------------------------------------------------------------")
+                }
+                computerAttack();
+            };
+
+            if (AttackHeadCheckedJS == true) {
+                attackHead();
+            } else if (AttackBodyCheckedJS == true) {
+                attackBody();
+            } else if (AttackLegsCheckedJS == true) {
+                attackLegs();
+            }
+
+            if (newCharacter1.hp <= 0) {
+                alert("you lose");
+                window.location = "/leaderboard";
+            }
+
+            if (newCharacter2.hp <= 0) {
+                alert("you win");
+                window.location = "/leaderboard";
+            }
+
+
+        };
+
+
+
+
+
+
+        $(document).ready(function(){
+
+            if(newCharacter1.characterType === "Archer"){
+                 $(".characterImg").attr("src", "assets/images/archerChar.png");
+                $(".characterContainer").css("width", "15%");
+                $(".characterContainer").css("height", "39%");
+            }
+
+            if(newCharacter1.characterType === "Barbarian"){
+                 $(".characterImg").attr("src", "assets/images/barbarian.png");
+                $(".characterContainer").css("width", "15%");
+                $(".characterContainer").css("height", "39%");
+                $(".characterContainer").css("bottom", "35%");
+            
+            }
+            if(newCharacter1.characterType === "Paladin"){
+                 $(".characterImg").attr("src", "assets/images/paladin.png");
+                $(".characterContainer").css("width", "15%");
+                $(".characterContainer").css("height", "45%");
+                $(".characterContainer").css("bottom", "30%");
+                
+            
+            }
+            if(newCharacter1.characterType === "Rogue"){
+                 $(".characterImg").attr("src", "assets/images/rogue.png");
+                $(".characterContainer").css("width", "15%");
+                $(".characterContainer").css("height", "45%");
+                $(".characterContainer").css("bottom", "30%");
+                
+            
+            }
+
+
+
+        })
+
+        /*
+         */
+    </script>
+
+</body>
+
+</html>

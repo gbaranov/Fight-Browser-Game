@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Project 2 Game</title>
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    
+  
+    
+</head>
+
+<body>
+    <h1>Open Console Log</h1>   
+   <form method="get" onsubmit="return is_checked()">
+  <input type="radio" name="attackSelected" value="head" id="head_checked"> Head<br>
+  <input type="radio" name="attackSelected" value="body" id="body_checked"> Body<br>
+  <input type="radio" name="attackSelected" value="legs" id="legs_checked"> Legs
+  
+  <input type="submit" value="Submit">
+</form>
+   
+
+<script type="text/javascript">
+
+
+var newCharacter1 = {
+                        characterType: "Barbarian",
+                        characterName: "Vlad",
+                        hp: 500,
+                        attack: 60,
+                        defense: 20                       
+                        
+                    };
+    
+var newCharacter2 = {
+                        characterType: "Paladin",
+                        characterName: "Bob",
+                        hp: 400,
+                        attack: 50,
+                        defense: 60
+                                  
+                    };
+             
+    
+function getComputerChoice(){
+    const choices = ['comp_head', 'comp_body', 'comp_legs'];
+    const randomNumber = Math.floor(Math.random()* 3);
+    return choices[randomNumber];
+    
+}
+console.log(getComputerChoice());  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ function is_checked(){
+     event.preventDefault();
+     
+     const char1_attackRoll_head = Math.floor((Math.random() * 10)+1);
+     const char1_defenseRoll_head = Math.floor((Math.random() * 11)+1);
+     
+     const char1_attackRoll_body = Math.floor((Math.random() * 15)+1);
+     const char1_defenseRoll_body = Math.floor((Math.random() * 11)+1);
+     
+     const char1_attackRoll_legs = Math.floor((Math.random() * 20)+1);
+     const char1_defenseRoll_legs = Math.floor((Math.random() * 11)+1);
+     
+     
+     const comp_attackRoll_head = Math.floor((Math.random() * 10)+1);
+     const comp_defenseRoll_head = Math.floor((Math.random() * 11)+1);
+     
+     const comp_attackRoll_body = Math.floor((Math.random() * 15)+1);
+     const comp_defenseRoll_body = Math.floor((Math.random() * 11)+1);
+     
+     const comp_attackRoll_legs = Math.floor((Math.random() * 20)+1);
+     const comp_defenseRoll_legs = Math.floor((Math.random() * 11)+1);
+     
+     
+     
+     let headCheckedJS = document.getElementById('head_checked').checked;
+     let bodyCheckedJS = document.getElementById('body_checked').checked;
+     let legsCheckedJS = document.getElementById('legs_checked').checked;
+     
+     
+     if(headCheckedJS==true){
+     
+            console.log("Head is checked")
+            console.log("attack Roll: " + char1_attackRoll_head);
+            console.log("defense Roll: " + char1_defenseRoll_head);
+            console.log(newCharacter1.attack);
+         
+         
+                 if(char1_attackRoll_head === 10){
+                     console.log("critical hit")
+                     newCharacter2.hp = newCharacter2.hp - newCharacter1.attack;
+
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                 }
+    
+         
+                 else if(char1_attackRoll_head >= char1_defenseRoll_head){
+                     console.log("attack is higher")
+                     console.log("newCharacter2.defense* 0.2 is   " + (newCharacter2.defense* 0.2))
+                     console.log("newCharacter1.attack - newCharacter2.defense* 0.2  :  " + (newCharacter1.attack - (newCharacter2.defense* 0.2)))
+                     console.log("newCharacter2.hp - newCharacter1.attack - (newCharacter2.defense* 0.2  :  " + (newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense* 0.2))))
+                     newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense* 0.2));
+
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                 } 
+         
+                else if(char1_attackRoll_head < char1_defenseRoll_head){
+                     console.log("you missed the head")
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                     
+                     
+                 }
+                 
+         
+     } else if(bodyCheckedJS==true){
+            
+            console.log("Body is checked")
+         
+         
+            if(char1_attackRoll_body === 15){
+                     console.log("critical hit")
+                     newCharacter2.hp = newCharacter2.hp - newCharacter1.attack;
+
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                 }
+    
+         
+                 else if(char1_attackRoll_body >= char1_defenseRoll_body){
+                     console.log("attack is higher")
+                     console.log("newCharacter2.defense* 0.4 is   " + (newCharacter2.defense* 0.4))
+                     console.log("newCharacter1.attack - newCharacter2.defense* 0.4  :  " + (newCharacter1.attack - (newCharacter2.defense* 0.4)))
+                     console.log("newCharacter2.hp - newCharacter1.attack - (newCharacter2.defense* 0.4  :  " + (newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense* 0.4))))
+                     newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense* 0.4));
+
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                 } 
+         
+                else if(char1_attackRoll_body < char1_defenseRoll_body){
+                     console.log("you missed the head")
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                     
+                     
+                 }
+                 
+     }else if(legsCheckedJS==true){
+            
+            console.log("Legs is checked")
+         
+            if(char1_attackRoll_legs === 20){
+                     console.log("critical hit")
+                     newCharacter2.hp = newCharacter2.hp - newCharacter1.attack;
+
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                 }
+    
+         
+                 else if(char1_attackRoll_legs >= char1_defenseRoll_legs){
+                     console.log("attack is higher")
+                     console.log("newCharacter2.defense* 0.6 is   " + (newCharacter2.defense* 0.6))
+                     console.log("newCharacter1.attack - (newCharacter2.defense* 0.6  :  " + (newCharacter1.attack - (newCharacter2.defense* 0.6)))
+                     console.log("newCharacter2.hp - newCharacter1.attack - (newCharacter2.defense* 0.6  :  " + (newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense* 0.6))))
+                     newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense* 0.6));
+
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                 } 
+         
+                else if(char1_attackRoll_legs < char1_defenseRoll_legs){
+                     console.log("you missed the head")
+                     console.log("newCharacter2.hp: " + newCharacter2.hp)
+                     console.log("------------------------------------------------------------------------------")
+                     
+                     
+                 }
+         
+     }
+     
+     if(newCharacter2.hp < 0){
+        alert('You win!')
+    }else if(newCharacter1.hp < 0){
+        alert('You lose!')
+             }
+ }
+   
+    
+    
+    
+    
+    
+
+/*
+   */           
+
+</script>
+
+</body>
+
+</html>
